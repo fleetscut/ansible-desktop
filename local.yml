@@ -9,7 +9,7 @@
       changed_when: False
       when: ansible_distribution == "Archlinux"
 
-  #roles
+  # roles
   - hosts: all
     tags: base
     become: true
