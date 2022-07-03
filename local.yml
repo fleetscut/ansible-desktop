@@ -1,17 +1,19 @@
 ---
-- hosts: all
+- hosts: localhost
   tags: all
   become: true
   pre_tasks:
-    - name: Pacman - Update cache
+    - name: pre-run | Apt update
       tags: always
-      pacman: update_cache=yes
+      apt:
+        update_cache: yes
       changed_when: False
-      when: ansible_distribution == "Archlinux"
+      when: ansible_distribution in ["Pop!_OS"]
 
 # roles
-- hosts: all
-  tags: base
+- hosts: localhost
+  tags: virtual
   become: true
   roles:
-    - base
+    - common
+    - virtual

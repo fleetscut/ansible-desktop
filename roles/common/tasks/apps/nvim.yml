@@ -1,0 +1,4 @@
+- name: Install nvim
+  tags: nvim
+  become: no
+  shell: echo "Installing nvim... $(date)" > $HOME/nvim.txt

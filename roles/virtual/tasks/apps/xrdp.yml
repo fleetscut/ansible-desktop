@@ -1,0 +1,6 @@
+- name: test
+  tags: xrdp
+  become: no
+  shell: echo "Installing xrdp... $(date)" > $HOME/xrdp.txt
+  args:
+    warn: false
