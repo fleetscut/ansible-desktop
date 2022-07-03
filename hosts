@@ -1,2 +1,5 @@
 [desktop]
 ansible-test
+
+[virtual]
+pop-os

@@ -1,5 +1,5 @@
 ---
-- hosts: localhost
+- hosts: all
   tags: all
   become: true
   pre_tasks:
@@ -11,7 +11,7 @@
       when: ansible_distribution in ["Pop!_OS"]
 
 # roles
-- hosts: localhost
+- hosts: virtual
   tags: virtual
   become: true
   roles:
