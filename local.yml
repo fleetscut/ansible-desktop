@@ -2,6 +2,8 @@
 - hosts: all
   tags: all
   become: true
+  vars:
+    ansible_python_interpreter: "/usr/bin/python3"
   pre_tasks:
     - name: pre-run | Apt update
       tags: always
