@@ -1,0 +1,5 @@
+- name: Apt Install Xrdp
+  become: yes
+  apt:
+    name: xrdp
+    update_cache: yes

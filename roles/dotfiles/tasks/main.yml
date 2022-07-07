@@ -1,0 +1,17 @@
+- name: install | clone dotfiles
+  git:
+    repo: https://github.com/fleetscut/dotfiles
+    dest: $HOME/.dotfiles
+
+- name: install | Apt install stow
+  become: yes
+  apt:
+    name: stow
+    update_cache: yes
+
+- name: configure | deploy vm dotfiles
+  become_user: '{{ username }}'
+  shell:
+    cmd: stow {{ item }}
+    chdir: $HOME/.dotfiles
+  loop: "{{ stow.dirs }}"

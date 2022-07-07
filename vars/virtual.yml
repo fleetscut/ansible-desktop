@@ -1,0 +1,4 @@
+stow:
+  dirs:
+    - zsh
+    - nvim

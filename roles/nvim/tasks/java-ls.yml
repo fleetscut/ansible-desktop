@@ -1,0 +1,76 @@
+- name: install java
+  become: yes
+  apt:
+    name: 
+      - default-jre
+      - default-jdk
+      - npm
+    update_cache: yes
+
+- name: check if jdtls already installed
+  become_user: '{{ username }}'
+  stat:
+    path: '{{ eclipse_jdtls_install_dir }}'
+  register: eclipse_jdtls_installed
+
+- name: download eclipse jdtls
+  become_user: '{{ username }}'
+  get_url:
+    url: '{{ eclipse_jdtls_snapshot_url }}/{{ eclipse_jdtls_snapshot_version }}'
+    dest: '{{ eclipse_jdtls_download_dir }}'
+  when: eclipse_jdtls_installed.stat.exists == false
+
+- name: create dir
+  file:
+    path: '/{{ eclipse_jdtls_install_dir }}'
+    state: directory
+  when: eclipse_jdtls_installed.stat.exists == false
+
+- name: unpack tar
+  become_user: '{{ username }}'
+  unarchive:
+    src: '/{{ eclipse_jdtls_download_dir }}/{{ eclipse_jdtls_snapshot_version }}'
+    dest: '/{{ eclipse_jdtls_install_dir }}'
+  when: eclipse_jdtls_installed.stat.exists == false
+
+- name: clone java debug
+  become_user: '{{ username }}'
+  git:
+    repo: '{{ java_debug_repo }}'
+    dest: '{{ java_debug_dir }}'
+
+- name: check java debug installed
+  become_user: '{{ username }}'
+  stat:
+    path: '{{ java_debug_dir }}'
+  register: java_debug_installed
+
+- name: compile java debug
+  become_user: '{{ username }}'
+  become: yes
+  shell:
+    chdir: '{{ java_debug_dir }}'
+    cmd: ./mvnw clean install
+  when: java_debug_installed.stat.exists == true
+
+- name: clone vscode java test
+  become_user: '{{ username }}'
+  git:
+    repo: '{{ vscode_java_test_repo }}'
+    dest: '{{ vscode_java_test_dir }}'
+
+- name: check vscode java test installed
+  become_user: '{{ username }}'
+  stat:
+    path: '{{ vscode_java_test_dir }}'
+  register: vscode_java_test_installed
+
+- name: compile vscode java test
+  become_user: '{{ username }}'
+  become: yes
+  shell:
+    chdir: '{{ vscode_java_test_dir }}'
+    cmd: npm install && npm run build-plugin
+  when: vscode_java_test_installed.stat.exists == true
+
+

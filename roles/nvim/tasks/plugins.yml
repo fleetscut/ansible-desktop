@@ -1,0 +1,7 @@
+- name: clone packer repo
+  git:
+    repo: '{{ packer_repo }}'
+    dest: '{{ packer_dir }}'
+
+
+## $ nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'

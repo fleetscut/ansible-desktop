@@ -1,0 +1,11 @@
+- name: install nvim
+  import_tasks: base.yml
+  tags: nvim
+
+- name: install plugins
+  import_tasks: plugins.yml
+  tags: nvim-plugins
+
+- name: install java lsp
+  import_tasks: java-ls.yml
+  tags: nvim-java

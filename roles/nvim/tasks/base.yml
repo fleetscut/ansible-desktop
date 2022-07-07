@@ -1,0 +1,50 @@
+- name: install | pre-requisites
+  become: yes
+  apt:
+    name: '{{ nvim_reqs }}'
+    update_cache: yes
+
+- name: install | check repo dir
+  become_user: '{{ username }}'
+  stat:
+    path: $HOME/{{ nvim_install_path }}
+  register: nvim_install_path_stats
+
+- name: install | check build dir
+  become_user: '{{ username }}'
+  stat:
+    path: $HOME/{{ nvim_install_path }}/build/bin
+  register: nvim_build_path_stats
+
+- name: install | create repo dir
+  become_user: '{{ username }}'
+  file:
+    path: $HOME/{{ nvim_install_path }}
+    state: directory
+  when: nvim_install_path_stats.stat.exists == false
+
+- name: install | clone repo
+  become_user: '{{ username }}'
+  git:
+    repo: '{{ nvim_repo  }}'
+    dest: $HOME/{{ nvim_install_path }}
+
+- name: install | clean build
+  become_user: '{{ username }}'
+  file:
+    path: $HOME/{{ nvim_install_path }}/build
+    state: absent
+  when: nvim_build_path_stats.stat.exists == true
+
+- name: install | build neovim
+  become_user: '{{ username }}'
+  become: yes
+  shell:
+    chdir: $HOME/{{ nvim_install_path}}
+    cmd: make CMAKE_BUILD_TYPE={{ nvim_build_type }} CMAKE_INSTALL_PREFIX={{ nvim_bin_path }} install
+
+- name: install | link binary
+  become_user: '{{ username }}'
+  shell:
+    chdir: $HOME/{{ nvim_bin_path }}
+    cmd: ln -s $HOME/{{ nvim_install_path }}/build/bin/nvim nvim

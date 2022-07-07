@@ -1,0 +1,33 @@
+nvim_reqs:
+  - ninja-build
+  - gettext
+  - libtool
+  - libtool-bin
+  - autoconf
+  - automake
+  - cmake
+  - g++
+  - pkg-config
+  - unzip
+  - curl
+  - doxygen
+
+nvim_install_path: repos/neovim
+nvim_build_type: Release
+nvim_repo: https://github.com/neovim/neovim
+nvim_branch: master
+nvim_bin_path: .local/bin
+
+packer_repo: https://github.com/wbthomason/packer.nvim
+packer_dir: $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+eclipse_jdtls_snapshot_url: https://download.eclipse.org/jdtls/snapshots/
+eclipse_jdtls_snapshot_version: jdt-language-server-1.10.0-202203040350.tar.gz
+eclipse_jdtls_download_dir: $HOME/Downloads
+eclipse_jdtls_install_dir: $HOME/.local/share/nvim/lsp/jdtls/eclipse.jdt.ls
+
+java_debug_repo: https://github.com/microsoft/java-debug
+java_debug_dir: $HOME/.local/share/nvim/lsp/jdtls/java-debug
+
+vscode_java_test_repo: https://github.com/microsoft/vscode-java-test
+vscode_java_test_dir: $HOME/.local/share/nvim/lsp/jdtls/vscode-java-test
