@@ -1,5 +1,2 @@
-[desktop]
-ansible-test
-
-[virtual]
-pop-os
+[local]
+localhost       ansible_connection=local

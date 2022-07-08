@@ -1,0 +1,23 @@
+- name: install pre reqs
+  become: yes
+  apt:
+    name: '{{ formatter_reqs }}'
+    update_cache: yes
+
+- name: install stylua
+  become: yes
+  community.general.cargo:
+    name: '{{ formatter_lua }}'
+
+- name: install formatters from apt
+  become: yes
+  apt:
+    name:
+      - '{{ formatter_clang }}'
+      - '{{ formatter_python }}'
+
+- name: install prettier
+  become: yes
+  npm:
+    name: '{{ formatter_js }}'
+    global: yes

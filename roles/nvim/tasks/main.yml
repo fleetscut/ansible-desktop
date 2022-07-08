@@ -9,3 +9,11 @@
 - name: install java lsp
   import_tasks: java-ls.yml
   tags: nvim-java
+
+- name: install lua lsp
+  import_tasks: lua-ls.yml
+  tags: nvim-lua
+
+- name: install formatters
+  import_tasks: formatters.yml
+  tags: nvim-formatters

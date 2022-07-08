@@ -1,10 +1,7 @@
 - name: install java
   become: yes
   apt:
-    name: 
-      - default-jre
-      - default-jdk
-      - npm
+    name: '{{ java_lsp_reqs }}'
     update_cache: yes
 
 - name: check if jdtls already installed
@@ -21,6 +18,7 @@
   when: eclipse_jdtls_installed.stat.exists == false
 
 - name: create dir
+  become_user: '{{ username }}'
   file:
     path: '/{{ eclipse_jdtls_install_dir }}'
     state: directory
@@ -73,4 +71,8 @@
     cmd: npm install && npm run build-plugin
   when: vscode_java_test_installed.stat.exists == true
 
-
+- name: create jdtls workspace folder
+  become_user: '{{ username }}'
+  file:
+    path: '{{ workspace_dir }}'
+    state: directory

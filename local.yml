@@ -1,21 +1,42 @@
----
-- hosts: all
-  tags: all
-  become: true
-  vars:
-    ansible_python_interpreter: "/usr/bin/python3"
+- hosts: localhost
+  connection: local
+  vars_files:
+    - vars/applist.yml
   pre_tasks:
+    - name: test
+      debug: msg={{ machine_type  }}
+      tags: always
+        
+    - name: pre-run | load vm vars
+      include_vars: vars/virtual.yml
+      tags: always
+      when: 
+        - machine_type is defined
+        - machine_type == "virtual"
+
     - name: pre-run | Apt update
       tags: always
-      apt:
-        update_cache: yes
+      debug: msg="Running apt"
       changed_when: False
       when: ansible_distribution in ["Pop!_OS"]
 
-# roles
-- hosts: virtual
-  tags: virtual
-  become: true
+    - name: check vars
+      debug: msg={{ xrdp }}
+      tags: check
+
   roles:
-    - common
-    - virtual
+    - role: xrdp
+      when: install_xrdp
+      tags: ['virtual','xrdp']
+
+    - role: zsh
+      when: install_zsh
+      tags: ['virtual','zsh']
+
+    - role: dotfiles
+      when: install_dotfiles
+      tags: ['virtual','dotfiles']
+
+    - role: nvim
+      when: install_nvim
+      tags: ['virtual','nvim']

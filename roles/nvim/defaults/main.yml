@@ -11,6 +11,8 @@ nvim_reqs:
   - unzip
   - curl
   - doxygen
+  - ripgrep
+  - fd-find
 
 nvim_install_path: repos/neovim
 nvim_build_type: Release
@@ -20,6 +22,15 @@ nvim_bin_path: .local/bin
 
 packer_repo: https://github.com/wbthomason/packer.nvim
 packer_dir: $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+java_lsp_reqs:
+  - default-jre
+  - default-jdk
+  - openjdk-11-doc
+  - openjdk-11-source
+  - openjdk-17-doc
+  - openjdk-17-source
+  - npm
 
 eclipse_jdtls_snapshot_url: https://download.eclipse.org/jdtls/snapshots/
 eclipse_jdtls_snapshot_version: jdt-language-server-1.10.0-202203040350.tar.gz
@@ -31,3 +42,17 @@ java_debug_dir: $HOME/.local/share/nvim/lsp/jdtls/java-debug
 
 vscode_java_test_repo: https://github.com/microsoft/vscode-java-test
 vscode_java_test_dir: $HOME/.local/share/nvim/lsp/jdtls/vscode-java-test
+
+workspace_dir: $HOME/workspace/
+
+lua_ls_repo: https://github.com/sumneko/lua-language-server
+lua_ls_dir: $HOME/.local/share/nvim/lsp/lua/lua-language-server/
+lua_ls_compile_dir: /3rd/luamake/
+
+formatter_reqs:
+  - cargo
+
+formatter_lua: stylua
+formatter_clang: clang-formatter
+formatter_python: black
+formatter_js: prettier
