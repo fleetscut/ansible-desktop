@@ -1,3 +1,4 @@
+---
 - hosts: localhost
   connection: local
   vars_files:
@@ -6,18 +7,18 @@
     - name: test
       debug: msg={{ machine_type  }}
       tags: always
-        
+
     - name: pre-run | load vm vars
       include_vars: vars/virtual.yml
       tags: always
-      when: 
+      when:
         - machine_type is defined
         - machine_type == "virtual"
 
     - name: pre-run | Apt update
       tags: always
       debug: msg="Running apt"
-      changed_when: False
+      changed_when: false
       when: ansible_distribution in ["Pop!_OS"]
 
     - name: check vars
@@ -27,16 +28,16 @@
   roles:
     - role: xrdp
       when: install_xrdp
-      tags: ['virtual','xrdp']
+      tags: ["virtual", "xrdp"]
 
     - role: zsh
       when: install_zsh
-      tags: ['virtual','zsh']
+      tags: ["virtual", "zsh"]
 
     - role: dotfiles
       when: install_dotfiles
-      tags: ['virtual','dotfiles']
+      tags: ["virtual", "dotfiles"]
 
     - role: nvim
       when: install_nvim
-      tags: ['virtual','nvim']
+      tags: ["virtual", "nvim"]

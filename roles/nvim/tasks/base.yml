@@ -4,6 +4,12 @@
     name: '{{ nvim_reqs }}'
     update_cache: yes
 
+- name: install | pip pre-requisites
+  become_user: '{{ username }}'
+  pip:
+    name: '{{ nvim_pip_reqs }}'
+    extra_args: --user
+
 - name: install | check repo dir
   become_user: '{{ username }}'
   stat:

@@ -21,3 +21,7 @@
 - name: install formatters
   import_tasks: formatters.yml
   tags: nvim-formatters
+
+- name: install yaml ls
+  import_tasks: yaml-ls.yml
+  tags: nvim-yaml

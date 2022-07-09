@@ -1,0 +1,12 @@
+---
+- name: install apt pre reqs
+  become: yes
+  apt:
+    name: "{{ yaml_ls_apt_reqs }}"
+    update_cache: yes
+
+- name: install pip pre req
+  become_user: "{{ username }}"
+  pip:
+    name: "{{ yaml_ls_pip_reqs }}"
+    exta_args: --user

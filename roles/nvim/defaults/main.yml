@@ -1,3 +1,4 @@
+---
 nvim_reqs:
   - ninja-build
   - gettext
@@ -13,6 +14,10 @@ nvim_reqs:
   - doxygen
   - ripgrep
   - fd-find
+
+nvim_pip_reqs:
+  - neovim
+  - pynvim
 
 nvim_install_path: repos/neovim
 nvim_build_type: Release
@@ -62,3 +67,9 @@ formatter_clang: clang-format
 formatter_java: google-java-format
 formatter_python: black
 formatter_js: prettier
+
+yaml_ls_pip_reqs:
+  - ansible-lint
+
+yaml_ls_apt_reqs:
+  - yamllint
