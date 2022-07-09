@@ -19,5 +19,7 @@
 - name: install prettier
   become: yes
   npm:
-    name: '{{ formatter_js }}'
+    name: 
+      - '{{ formatter_js }}'
+      - '{{ formatter_java }}'
     global: yes

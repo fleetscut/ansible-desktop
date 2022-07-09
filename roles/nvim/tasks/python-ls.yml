@@ -1,0 +1,11 @@
+- name: install pip3
+  become: yes
+  apt:
+    name: '{{ python_reqs }}'
+    update_cache: yes
+
+- name: install python ls
+  become_user: '{{ username }}'
+  pip:
+    name: '{{ python_ls }}'
+    extra_args: --user

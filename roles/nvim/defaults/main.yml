@@ -49,10 +49,16 @@ lua_ls_repo: https://github.com/sumneko/lua-language-server
 lua_ls_dir: $HOME/.local/share/nvim/lsp/lua/lua-language-server/
 lua_ls_compile_dir: /3rd/luamake/
 
+python_reqs:
+  - python3-pip
+
+python_ls: jedi_language_server
+
 formatter_reqs:
   - cargo
 
 formatter_lua: stylua
-formatter_clang: clang-formatter
+formatter_clang: clang-format
+formatter_java: google-java-format
 formatter_python: black
 formatter_js: prettier

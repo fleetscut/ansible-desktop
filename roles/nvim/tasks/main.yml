@@ -14,6 +14,10 @@
   import_tasks: lua-ls.yml
   tags: nvim-lua
 
+- name: install python lsp
+  import_tasks: python-ls.yml
+  tags: nvim-python
+
 - name: install formatters
   import_tasks: formatters.yml
   tags: nvim-formatters
