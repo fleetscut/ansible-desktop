@@ -1,3 +1,4 @@
+---
 - name: install java
   become: yes
   apt:

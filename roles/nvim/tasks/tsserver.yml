@@ -1,0 +1,4 @@
+- name: install tsserver
+  become: yes
+  shell:
+    cmd: npm install --global typescript typescript-language-server

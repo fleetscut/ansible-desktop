@@ -9,4 +9,15 @@
   become_user: "{{ username }}"
   pip:
     name: "{{ yaml_ls_pip_reqs }}"
-    exta_args: --user
+    extra_args: --user
+
+- name: install npm pre req
+  become: yes
+  npm:
+    name: yarn
+    global: yes
+
+- name: install yaml-language-server
+  become_user: "{{ username }}"
+  shell:
+    cmd: yarn global add yaml-language-server

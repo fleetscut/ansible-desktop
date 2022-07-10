@@ -73,3 +73,17 @@ yaml_ls_pip_reqs:
 
 yaml_ls_apt_reqs:
   - yamllint
+  - npm
+
+yamlls_npm_reqs:
+  - yarn
+
+json_ls_reqs:
+  - jsonls
+
+ts_server_reqs:
+  - typescript
+  - typescript-language-server
+
+cpp_reqs:
+ - clangd

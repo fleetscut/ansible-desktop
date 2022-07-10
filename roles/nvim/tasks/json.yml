@@ -1,0 +1,5 @@
+- name: install json ls
+  become: yes
+  npm:
+    name: jsonls
+    global: yes

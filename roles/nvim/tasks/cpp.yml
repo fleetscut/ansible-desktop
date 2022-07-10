@@ -1,0 +1,5 @@
+- name: install clangd
+  become: yes
+  apt:
+    name: '{{ cpp_reqs }}'
+    update_cache: yes

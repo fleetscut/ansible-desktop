@@ -25,3 +25,15 @@
 - name: install yaml ls
   import_tasks: yaml-ls.yml
   tags: nvim-yaml
+
+- name: install json ls
+  import_tasks: json.yml
+  tags: nvim-json
+
+- name: install tsserver
+  import_tasks: tsserver.yml
+  tags: nvim-tsserver
+
+- name: install clangd
+  import_tasks: cpp.yml
+  tags: nvim-cpp
