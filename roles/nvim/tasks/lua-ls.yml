@@ -1,19 +1,20 @@
 - name: clone lua-language-server
-  become_user: '{{ username }}'
+  become_user: "{{ username }}"
   git:
-    repo: '{{ lua_ls_repo }}'
-    dest: '{{ lua_ls_dir }}'
+    repo: "{{ lua_ls_repo }}"
+    dest: "{{ lua_ls_dir }}"
     recursive: yes
 
 - name: check lua-language-server installed
-  become_user: '{{ username }}'
+  become_user: "{{ username }}"
   stat:
-    path: '{{ lua_ls_dir }}'
+    path: "{{ lua_ls_dir }}"
   register: lua_ls_installed
 
+  # TODO Change to precompiled binary
 - name: build lua-language-server
-  become_user: '{{ username }}'
+  become_user: "{{ username }}"
   shell:
-    chdir: '{{ lua_ls_dir }}/{{ lua_ls_compile_dir }}'
+    chdir: "{{ lua_ls_dir }}/{{ lua_ls_compile_dir }}"
     cmd: ./compile/install.sh && cd ../.. && 3rd/luamake/luamake rebuild
   when: lua_ls_installed.stat.exists == true
