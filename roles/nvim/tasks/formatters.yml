@@ -6,7 +6,7 @@
     update_cache: yes
 
 - name: install stylua
-  become: yes
+  become_user: { { username } }
   community.general.cargo:
     name: "{{ formatter_lua }}"
 
@@ -22,7 +22,7 @@
   npm:
     name: "{{ formatter_js }}"
     global: yes
-    
+
 - name: install google-format-java
   become: yes
   npm:
