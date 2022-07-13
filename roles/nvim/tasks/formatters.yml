@@ -20,7 +20,11 @@
 - name: install prettier
   become: yes
   npm:
-    name:
-      - "{{ formatter_js }}"
-      - "{{ formatter_java }}"
+    name: "{{ formatter_js }}"
+    global: yes
+    
+- name: install google-format-java
+  become: yes
+  npm:
+    name: "{{ formatter_java }}"
     global: yes

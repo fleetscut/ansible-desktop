@@ -51,6 +51,7 @@
 
 - name: install | link binary
   become_user: '{{ username }}'
-  shell:
-    chdir: $HOME/{{ nvim_bin_path }}
-    cmd: ln -s $HOME/{{ nvim_install_path }}/build/bin/nvim nvim
+  file:
+    src: $HOME/{{ nvim_install_path }}/build/bin/nvim
+    dest: $HOME/{{ nvim_bin_path }}/nvim
+    state: link

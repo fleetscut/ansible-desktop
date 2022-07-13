@@ -75,8 +75,7 @@ yaml_ls_apt_reqs:
   - yamllint
   - npm
 
-yamlls_npm_reqs:
-  - yarn
+yamlls_npm_reqs: yarn
 
 json_ls_reqs:
   - jsonls

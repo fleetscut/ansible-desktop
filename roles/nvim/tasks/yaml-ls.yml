@@ -14,7 +14,7 @@
 - name: install npm pre req
   become: yes
   npm:
-    name: yarn
+    name: "{{ yamlls_npm_reqs }}"
     global: yes
 
 - name: install yaml-language-server
