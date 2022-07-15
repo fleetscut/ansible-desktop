@@ -6,7 +6,7 @@
     update_cache: yes
 
 - name: install stylua
-  become_user: { { username } }
+  become_user: "{{ username }}"
   community.general.cargo:
     name: "{{ formatter_lua }}"
 
