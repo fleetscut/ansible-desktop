@@ -2,4 +2,10 @@
   hosts: localhost
   roles:
     - role: zsh
+      tags:
+        zsh
       when: install_zsh
+    - role: dotfiles
+      tags:
+        dotfiles
+      when: install_dotfiles

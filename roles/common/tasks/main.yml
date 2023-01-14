@@ -1,3 +1,0 @@
-- name: Nvim
-  include_tasks: apps/nvim.yml
-  tags: nvim

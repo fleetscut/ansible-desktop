@@ -1,3 +1,4 @@
 install_zsh: true
+install_dotfiles: true
 
 username: fleetscut

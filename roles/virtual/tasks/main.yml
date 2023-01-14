@@ -1,4 +1,0 @@
-- name: Xrdp
-  include_tasks: apps/xrdp.yml
-
-- debug: msg="Debug Task"

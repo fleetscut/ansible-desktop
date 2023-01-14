@@ -1,7 +1,7 @@
 ---
 - name: Workstation Initialization Playbook
-- hosts: localhost
-- pre_tasks:
+  hosts: localhost
+  pre_tasks:
     - name: pre-run | Apt update
       tags: always
       debug: msg="Running apt"
