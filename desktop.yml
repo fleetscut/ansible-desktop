@@ -1,0 +1,5 @@
+- name: Desktop Playbook
+  hosts: localhost
+  roles:
+    - role: zsh
+      when: install_zsh

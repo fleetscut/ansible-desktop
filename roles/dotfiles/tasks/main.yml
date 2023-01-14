@@ -8,10 +8,3 @@
   apt:
     name: stow
     update_cache: yes
-
-- name: configure | deploy vm dotfiles
-  become_user: '{{ username }}'
-  shell:
-    cmd: stow {{ item }}
-    chdir: $HOME/.dotfiles
-  loop: "{{ stow.dirs }}"

@@ -37,3 +37,7 @@
 - name: install clangd
   import_tasks: cpp.yml
   tags: nvim-cpp
+
+- name: install rust
+  import_tasks: rust.yml
+  tags: nvim-rust

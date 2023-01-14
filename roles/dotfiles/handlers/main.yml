@@ -1,0 +1,5 @@
+- name: stow zsh configs
+  become_user: "{{ username }}"
+  shell:
+    cmd: stow zsh
+    chdir: $HOME/.dotfiles
