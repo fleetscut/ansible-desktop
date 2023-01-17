@@ -1,6 +1,6 @@
 - name: install nvim
   import_tasks: base.yml
-  tags: nvim
+  tags: nvim-base
 
 - name: install plugins
   import_tasks: plugins.yml

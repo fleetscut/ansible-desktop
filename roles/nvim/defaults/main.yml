@@ -38,7 +38,8 @@ java_lsp_reqs:
   - npm
 
 eclipse_jdtls_snapshot_url: https://download.eclipse.org/jdtls/snapshots/
-eclipse_jdtls_snapshot_version: jdt-language-server-1.10.0-202203040350.tar.gz
+#eclipse_jdtls_snapshot_version: jdt-language-server-1.10.0-202203040350.tar.gz
+eclipse_jdtls_snapshot_version: jdt-language-server-latest.tar.gz
 eclipse_jdtls_download_dir: $HOME/Downloads
 eclipse_jdtls_install_dir: $HOME/.local/share/nvim/lsp/jdtls/eclipse.jdt.ls
 

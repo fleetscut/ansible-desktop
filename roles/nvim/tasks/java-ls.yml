@@ -44,13 +44,13 @@
     path: '{{ java_debug_dir }}'
   register: java_debug_installed
 
-- name: compile java debug
-  become_user: '{{ username }}'
-  become: yes
-  shell:
-    chdir: '{{ java_debug_dir }}'
-    cmd: ./mvnw clean install
-  when: java_debug_installed.stat.exists == true
+    #- name: compile java debug
+    #  become_user: '{{ username }}'
+    #  become: yes
+    #  shell:
+    #    chdir: '{{ java_debug_dir }}'
+    #    cmd: ./mvnw clean install
+    #  when: java_debug_installed.stat.exists == true
 
 - name: clone vscode java test
   become_user: '{{ username }}'

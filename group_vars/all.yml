@@ -1,4 +1,5 @@
 install_zsh: true
 install_dotfiles: true
+install_nvim: true
 
 username: fleetscut

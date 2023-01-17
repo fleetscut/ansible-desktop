@@ -3,3 +3,9 @@
   shell:
     cmd: stow zsh
     chdir: $HOME/.dotfiles
+
+- name: stow nvim configs
+  become_user: "{{ username }}"
+  shell:
+    cmd: stow nvim
+    chdir: $HOME/.dotfiles

@@ -55,3 +55,4 @@
     src: $HOME/{{ nvim_install_path }}/build/bin/nvim
     dest: $HOME/{{ nvim_bin_path }}/nvim
     state: link
+  notify: stow nvim config

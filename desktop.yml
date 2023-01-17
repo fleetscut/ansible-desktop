@@ -9,3 +9,7 @@
       tags:
         dotfiles
       when: install_dotfiles
+    - role: nvim
+      tags:
+        nvim
+      when: install_nvim
